@@ -1,7 +1,7 @@
 {
-  "name": "ai-website-builder",
+  "name": "homecare-technicians",
   "version": "1.0.0",
-  "description": "Build websites by talking to AI - no coding required",
+  "description": "Professional appliance repair services website for Homecare Technicians",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -14,12 +14,12 @@
     "publish:vercel": "bash scripts/publish-vercel.sh"
   },
   "keywords": [
-    "ai",
-    "website",
-    "builder",
-    "no-code",
-    "claude",
-    "codex"
+    "homecare",
+    "technicians",
+    "appliance-repair",
+    "ac-repair",
+    "faridabad",
+    "delhi"
   ],
   "author": "V",
   "license": "MIT",
