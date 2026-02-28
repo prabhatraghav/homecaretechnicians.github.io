@@ -69,7 +69,8 @@ else
 fi
 
 # Update Vite base for Pages (safe to re-run)
-if command -v node >/dev/null 2>&1; then
+# SKIP if custom domain is detected (base: '/' is required)
+if [ ! -f public/CNAME ] && command -v node >/dev/null 2>&1; then
   node scripts/update-vite-base.mjs || true
   if ! git diff --quiet -- vite.config.js; then
     git add vite.config.js
