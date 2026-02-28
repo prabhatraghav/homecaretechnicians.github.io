@@ -21,3 +21,13 @@
     font-family: var(--font-display);
   }
 }
+
+@layer components {
+  /* Style select like a placeholder when empty */
+  .select-placeholder {
+    color: #94a3b8 !important; /* text-slate-400 */
+  }
+  .select-selected {
+    color: #0f172a !important; /* text-slate-900 */
+  }
+}
