@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,10 +20,10 @@
   <!-- Alpine.js for interactivity -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
-<body class="flex h-full flex-col bg-white antialiased">
+<body class="flex min-h-screen flex-col bg-white antialiased">
 
   <!-- Navigation -->
-  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 py-4" x-data="{ mobileMenuOpen: false }">
+  <header class="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-slate-100 py-4 shadow-sm" x-data="{ mobileMenuOpen: false }">
     <div class="container mx-auto px-4">
       <nav class="flex items-center justify-between">
         <a href="/" class="text-xl font-bold tracking-tight text-slate-900">
@@ -35,12 +35,13 @@
           <a href="#services" class="hover:text-blue-600 transition">Our Services</a>
           <a href="#why-us" class="hover:text-blue-600 transition">Why Us</a>
           <a href="#about" class="hover:text-blue-600 transition">About Us</a>
+          <a href="#quote-form" class="hover:text-blue-600 transition text-blue-600">Book Now</a>
           <a href="#contact" class="hover:text-blue-600 transition">Contact Info</a>
         </div>
 
         <div class="flex items-center gap-4">
-          <a href="tel:7599173900" class="hidden sm:inline-flex items-center rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-700 transition">
-            Call 7599173900
+          <a href="#quote-form" class="hidden sm:inline-flex items-center rounded-full bg-blue-600 px-6 py-2.5 text-sm font-bold text-white hover:bg-blue-700 shadow-lg shadow-blue-600/20 transition transform active:scale-95 uppercase tracking-wider">
+            Get a Free Quote
           </a>
           
           <!-- Mobile Menu Button -->
@@ -73,9 +74,10 @@
         <a href="#services" @click="mobileMenuOpen = false" class="py-2 text-sm font-bold uppercase tracking-widest text-slate-700 hover:text-blue-600 transition">Our Services</a>
         <a href="#why-us" @click="mobileMenuOpen = false" class="py-2 text-sm font-bold uppercase tracking-widest text-slate-700 hover:text-blue-600 transition">Why Us</a>
         <a href="#about" @click="mobileMenuOpen = false" class="py-2 text-sm font-bold uppercase tracking-widest text-slate-700 hover:text-blue-600 transition">About Us</a>
+        <a href="#quote-form" @click="mobileMenuOpen = false" class="py-2 text-sm font-bold uppercase tracking-widest text-blue-600 hover:text-blue-700 transition">Book Now</a>
         <a href="#contact" @click="mobileMenuOpen = false" class="py-2 text-sm font-bold uppercase tracking-widest text-slate-700 hover:text-blue-600 transition">Contact Info</a>
-        <a href="tel:7599173900" class="mt-2 inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-bold text-white hover:bg-blue-700 transition uppercase tracking-widest sm:hidden">
-          Call 7599173900
+        <a href="#quote-form" @click="mobileMenuOpen = false" class="mt-2 inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-bold text-white hover:bg-blue-700 transition uppercase tracking-widest sm:hidden shadow-lg shadow-blue-600/20">
+          Get a Free Quote
         </a>
       </div>
     </div>
@@ -100,7 +102,7 @@
                    image: 'images/hero-slide-2.webp'
                  },
                  { 
-                   title: 'FIXED PRICING & NO HIDDEN CHARGES', 
+                   title: 'FAIR PRICING & NO HIDDEN CHARGES', 
                    subtitle: 'QUALITY SERVICE, HONEST PRICES',
                    description: 'Experience hassle-free repair services with transparent pricing. Your satisfaction is our top priority.',
                    image: 'images/hero-slide-3.webp'
@@ -131,7 +133,7 @@
                   <p class="mt-6 text-lg tracking-tight text-slate-700 leading-relaxed max-w-xl" x-text="slide.description"></p>
                   
                   <div class="mt-10 flex flex-wrap gap-4">
-                    <a href="#book-service" class="rounded-full bg-blue-600 px-8 py-4 text-base font-semibold text-white hover:bg-blue-700 shadow-lg transition transform hover:-translate-y-0.5">
+                    <a href="#quote-form" class="rounded-full bg-blue-600 px-8 py-4 text-base font-semibold text-white hover:bg-blue-700 shadow-lg transition transform hover:-translate-y-0.5">
                       Book a Service/Repair
                     </a>
                     <a href="#services" class="rounded-full bg-white border-2 border-slate-200 px-8 py-4 text-base font-semibold text-slate-900 hover:bg-slate-50 transition shadow-sm">
@@ -173,7 +175,7 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-12 sm:py-20 bg-white">
+    <section id="services" class="py-16 sm:py-24 bg-white">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-2xl text-center">
           <h2 class="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl font-black uppercase">
@@ -192,7 +194,7 @@
             </div>
             <h3 class="text-xl font-bold text-slate-900 uppercase">AC Repair & Service</h3>
             <p class="mt-4 text-slate-600 leading-relaxed text-sm">Complete AC servicing, gas charging, installation, and repair for all Split and Window AC units.</p>
-            <a href="#book-service" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover:text-blue-700 uppercase">
+            <a href="#quote-form" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover:text-blue-700 uppercase">
               BOOK NOW <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"></path></svg>
             </a>
           </div>
@@ -204,7 +206,7 @@
             </div>
             <h3 class="text-xl font-bold text-slate-900 uppercase">Washing Machine</h3>
             <p class="mt-4 text-slate-600 leading-relaxed text-sm">Expert repair for front-load, top-load, and semi-automatic machines. We fix leaks, motor issues, and PCB problems.</p>
-            <a href="#book-service" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover:text-blue-700 uppercase">
+            <a href="#quote-form" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover:text-blue-700 uppercase">
               BOOK NOW <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"></path></svg>
             </a>
           </div>
@@ -216,7 +218,7 @@
             </div>
             <h3 class="text-xl font-bold text-slate-900 uppercase">Refrigerator</h3>
             <p class="mt-4 text-slate-600 leading-relaxed text-sm">Specialized in cooling issues, gas refilling, compressor repairs, and sensor troubleshooting for all major brands.</p>
-            <a href="#book-service" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover:text-blue-700 uppercase">
+            <a href="#quote-form" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover:text-blue-700 uppercase">
               BOOK NOW <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"></path></svg>
             </a>
           </div>
@@ -228,7 +230,7 @@
             </div>
             <h3 class="text-xl font-bold text-slate-900 uppercase">LED TV</h3>
             <p class="mt-4 text-slate-600 leading-relaxed text-sm">Expert diagnosis and repair for display issues, sound problems, and motherboard failures for all smart TVs.</p>
-            <a href="#book-service" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover:text-blue-700 uppercase">
+            <a href="#quote-form" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover:text-blue-700 uppercase">
               BOOK NOW <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"></path></svg>
             </a>
           </div>
@@ -240,7 +242,7 @@
             </div>
             <h3 class="text-xl font-bold text-slate-900 uppercase">Microwave Oven</h3>
             <p class="mt-4 text-slate-600 leading-relaxed text-sm">Fast solutions for heating problems, spark issues, turntable malfunctions, and control panel repairs.</p>
-            <a href="#book-service" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover:text-blue-700 uppercase">
+            <a href="#quote-form" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover:text-blue-700 uppercase">
               BOOK NOW <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"></path></svg>
             </a>
           </div>
@@ -252,7 +254,7 @@
             </div>
             <h3 class="text-xl font-bold text-slate-900 uppercase">Kitchen Chimney</h3>
             <p class="mt-4 text-slate-600 leading-relaxed text-sm">Professional chimney cleaning, motor repair, suction troubleshooting, and installation services.</p>
-            <a href="#book-service" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover:text-blue-700 uppercase">
+            <a href="#quote-form" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover:text-blue-700 uppercase">
               BOOK NOW <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"></path></svg>
             </a>
           </div>
@@ -264,7 +266,7 @@
             </div>
             <h3 class="text-xl font-bold text-slate-900 uppercase">Gas Hob / Stove</h3>
             <p class="mt-4 text-slate-600 leading-relaxed text-sm">Expert repair for gas leakage, burner issues, and ignition problems for all major cooktop brands.</p>
-            <a href="#book-service" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover:text-blue-700 uppercase">
+            <a href="#quote-form" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover:text-blue-700 uppercase">
               BOOK NOW <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"></path></svg>
             </a>
           </div>
@@ -276,7 +278,7 @@
             </div>
             <h3 class="text-xl font-bold text-slate-900 uppercase">Laptop & Computer</h3>
             <p class="mt-4 text-slate-600 leading-relaxed text-sm">Fast repair for hardware issues, screen replacement, software troubleshooting, and performance upgrades.</p>
-            <a href="#book-service" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover:text-blue-700 uppercase">
+            <a href="#quote-form" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover:text-blue-700 uppercase">
               BOOK NOW <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"></path></svg>
             </a>
           </div>
@@ -288,7 +290,7 @@
             </div>
             <h3 class="text-xl font-bold text-slate-900 uppercase">CCTV Camera</h3>
             <p class="mt-4 text-slate-600 leading-relaxed text-sm">Comprehensive CCTV installation, maintenance, and repair for home and office security systems.</p>
-            <a href="#book-service" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover:text-blue-700 uppercase">
+            <a href="#quote-form" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover:text-blue-700 uppercase">
               BOOK NOW <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"></path></svg>
             </a>
           </div>
@@ -297,7 +299,7 @@
     </section>
 
     <!-- Why Choose Us Section -->
-    <section id="why-us" class="py-12 sm:py-20 bg-slate-50">
+    <section id="why-us" class="py-16 sm:py-24 bg-slate-50">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="lg:grid lg:grid-cols-2 lg:gap-x-16 lg:items-center">
           <div>
@@ -348,14 +350,14 @@
                   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 </div>
                 <div>
-                  <h3 class="font-bold text-slate-900 uppercase text-sm tracking-wide">Fixed Pricing</h3>
+                  <h3 class="font-bold text-slate-900 uppercase text-sm tracking-wide">Fair Pricing</h3>
                   <p class="mt-1 text-sm text-slate-600">No hidden charges. Transparent billing and honest pricing.</p>
                 </div>
               </div>
             </div>
 
             <div class="mt-12">
-              <a href="#book-service" class="inline-flex items-center gap-x-2 text-blue-600 font-black uppercase tracking-widest text-sm hover:text-blue-700 transition">
+              <a href="#quote-form" class="inline-flex items-center gap-x-2 text-blue-600 font-black uppercase tracking-widest text-sm hover:text-blue-700 transition">
                 Experience Professional Service Today <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
               </a>
             </div>
@@ -374,7 +376,7 @@
     </section>
 
     <!-- About Us Section -->
-    <section id="about" class="py-12 sm:py-20 bg-white">
+    <section id="about" class="py-16 sm:py-24 bg-white">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="lg:grid lg:grid-cols-2 lg:gap-x-16 lg:items-center">
           <!-- Image Side (Left) -->
@@ -431,7 +433,7 @@
     </section>
 
     <!-- Booking Form Section -->
-    <section id="book-service" class="py-12 sm:py-20 bg-slate-50">
+    <section id="book-service" class="py-16 sm:py-24 bg-slate-50">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="lg:grid lg:grid-cols-12 lg:gap-x-16 items-start">
           
@@ -458,7 +460,31 @@
                   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                 </div>
                 <div>
-                  <h3 class="font-bold text-slate-900 uppercase text-sm tracking-wider">Quality Parts</h3>
+                  <h3 class="font-bold text-slate-900 uppercase text-sm tracking-wider">Quality Spare Parts</h3>
+                </div>
+              </div>
+              <div class="flex gap-x-6">
+                <div class="flex-none w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <div>
+                  <h3 class="font-bold text-slate-900 uppercase text-sm tracking-wider">Experienced Technicians</h3>
+                </div>
+              </div>
+              <div class="flex gap-x-6">
+                <div class="flex-none w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                </div>
+                <div>
+                  <h3 class="font-bold text-slate-900 uppercase text-sm tracking-wider">90-Day Repair Warranty</h3>
+                </div>
+              </div>
+              <div class="flex gap-x-6">
+                <div class="flex-none w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <div>
+                  <h3 class="font-bold text-slate-900 uppercase text-sm tracking-wider">Fair Pricing</h3>
                 </div>
               </div>
             </div>
@@ -466,7 +492,7 @@
 
           <!-- Right Side: The Form -->
           <div class="lg:col-span-7">
-            <div class="bg-white rounded-[2.5rem] p-8 sm:p-12 border border-slate-100 shadow-sm"
+            <div id="quote-form" class="scroll-mt-24 bg-white rounded-[2.5rem] p-6 sm:p-10 border border-slate-100 shadow-sm"
                  x-data="{
                    name: '',
                    mobile: '',
@@ -487,34 +513,37 @@
                      window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
                    }
                  }">
-              <form @submit.prevent="sendToWhatsApp()" class="space-y-6">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div class="mb-6">
+                <h3 class="text-xl font-black text-slate-900 uppercase tracking-tight">Get A <span class="text-blue-600">Free Quote</span></h3>
+              </div>
+              <form @submit.prevent="sendToWhatsApp()" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <!-- Name -->
                   <div>
-                    <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2 ml-1">Full Name</label>
+                    <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1.5 ml-1">Full Name</label>
                     <input type="text" x-model="name" placeholder="Enter your name" 
                            maxlength="25" pattern="[A-Za-z ]{1,25}" required
                            title="Max 25 letters and spaces only"
-                           class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition font-medium">
+                           class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition font-medium">
                   </div>
                   <!-- Mobile -->
                   <div>
-                    <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2 ml-1">Mobile Number</label>
+                    <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1.5 ml-1">Mobile Number</label>
                     <input type="text" x-model="mobile" placeholder="10-digit mobile no." 
                            maxlength="10" minlength="10" pattern="[0-9]{10}" required
                            oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                            title="Please enter exactly 10 digits"
-                           class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition font-medium">
+                           class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition font-medium">
                   </div>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <!-- Service Type -->
                   <div>
-                    <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2 ml-1">Service Type</label>
+                    <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1.5 ml-1">Service Type</label>
                     <select x-model="service_type" required
                             :class="service_type === '' ? 'select-placeholder' : 'select-selected'"
-                            class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition font-medium appearance-none">
+                            class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition font-medium appearance-none">
                       <option value="" disabled selected>Select Repair or Service</option>
                       <option value="Repair" class="text-slate-900">Repair Only</option>
                       <option value="Service" class="text-slate-900">General Service</option>
@@ -524,20 +553,20 @@
                   </div>
                   <!-- Brand -->
                   <div>
-                    <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2 ml-1">Appliance Brand</label>
+                    <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1.5 ml-1">Appliance Brand</label>
                     <input type="text" x-model="brand" placeholder="e.g. Samsung, LG" 
                            maxlength="15" pattern="[A-Za-z ]{1,15}" required
                            title="Max 15 letters and spaces only"
-                           class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition font-medium">
+                           class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition font-medium">
                   </div>
                 </div>
 
                 <!-- Product Dropdown -->
                 <div>
-                  <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2 ml-1">Select Product</label>
+                  <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1.5 ml-1">Select Product</label>
                   <select x-model="product" required
                           :class="product === '' ? 'select-placeholder' : 'select-selected'"
-                          class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition font-medium appearance-none">
+                          class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition font-medium appearance-none">
                     <option value="" disabled selected>What needs fixing?</option>
                     <option value="Laptop" class="text-slate-900">Laptop</option>
                     <option value="Desktop" class="text-slate-900">Desktop</option>
@@ -561,22 +590,21 @@
 
                 <!-- Address & Description -->
                 <div>
-                  <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2 ml-1">Full Address & Issue</label>
-                  <textarea x-model="address_description" rows="4" placeholder="Enter address and description..." 
+                  <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1.5 ml-1">Full Address & Issue</label>
+                  <textarea x-model="address_description" rows="2" placeholder="Enter address and description..." 
                             maxlength="500" required
-                            class="w-full bg-white border border-slate-200 rounded-2xl px-5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition font-medium resize-none"></textarea>
+                            class="w-full bg-white border border-slate-200 rounded-xl px-4 py-2 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition font-medium resize-none"></textarea>
                 </div>
 
                 <!-- Security & Submit -->
-                <div class="flex flex-col sm:flex-row items-center justify-between gap-6 pt-4 border-t border-slate-100 mt-8">
-                  <div class="flex items-center gap-x-3 text-emerald-600">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                <div class="flex flex-col items-center gap-3 pt-3 border-t border-slate-100 mt-2">
+                  <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-x-2 bg-emerald-600 text-white px-8 py-3 rounded-xl font-black uppercase tracking-widest text-sm hover:bg-emerald-700 shadow-xl shadow-emerald-600/20 transition transform active:scale-95">
+                    Book a Service or Repair Now
+                  </button>
+                  <div class="flex items-center gap-x-2 text-emerald-600">
+                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                     <span class="text-[10px] font-bold uppercase tracking-widest">End-to-End Encrypted</span>
                   </div>
-                  <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-x-2 bg-emerald-600 text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-emerald-700 shadow-xl shadow-emerald-600/20 transition transform active:scale-95">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-                    Book Now
-                  </button>
                 </div>
               </form>
             </div>
@@ -587,7 +615,7 @@
     </section>
 
     <!-- Contact Information Grid -->
-    <section id="contact" class="py-12 sm:py-20 bg-white">
+    <section id="contact" class="py-16 sm:py-24 bg-white">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-2xl text-center">
           <h2 class="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl font-black uppercase">
@@ -676,6 +704,12 @@
         <a href="https://whatsapp.com/channel/0029Vb7IWDL0rGiLGTgERp3Q" class="text-slate-400 hover:text-[#25D366] transition" aria-label="WhatsApp">
           <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
         </a>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">
+        <a href="/privacy-policy.html" class="hover:text-blue-600 transition">Privacy Policy</a>
+        <a href="/terms-of-service.html" class="hover:text-blue-600 transition">Terms of Service</a>
+        <a href="/legal-disclaimer.html" class="hover:text-blue-600 transition">Legal Disclaimer</a>
       </div>
 
       <p class="text-sm text-slate-500 text-center">
