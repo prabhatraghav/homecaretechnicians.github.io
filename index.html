@@ -97,10 +97,9 @@
                    description: 'Fast, reliable, and guaranteed repairs for all major brands. Get your appliances fixed by certified professionals today.',
                    image: 'images/homecaretechnicians-main-slider.webp'
                  },
-                 { 
-                   title: 'AC REPAIR & SERVICE EXPERTS', 
-                   subtitle: 'SAME DAY SERVICE AT YOUR DOORSTEP',
-                   description: 'From Split AC servicing to Window AC repairs, we use only genuine parts and offer a 90-day warranty.',
+                 {
+                   title: 'AC REPAIR & SERVICING EXPERTS',
+                   subtitle: 'SAME DAY SERVICE AT YOUR DOORSTEP',                   description: 'From Split AC servicing to Window AC repairs, we use only genuine parts and offer a 90-day warranty.',
                    image: 'images/homecaretechnicians-ac-slider.webp'
                  },
                  { 
@@ -167,14 +166,6 @@
           </div>
         </template>
       </div>
-
-      <!-- Navigation Arrows -->
-      <button @click="prev()" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 rounded-full bg-white/90 hover:bg-white text-slate-800 shadow-xl z-20 transition group">
-        <svg class="w-5 h-5 sm:w-6 h-6 group-hover:-translate-x-0.5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
-      </button>
-      <button @click="next()" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 rounded-full bg-white/90 hover:bg-white text-slate-800 shadow-xl z-20 transition group">
-        <svg class="w-5 h-5 sm:w-6 h-6 group-hover:translate-x-0.5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
-      </button>
 
       <!-- Dots Indicator -->
       <div class="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 flex gap-2 sm:gap-3 z-20">
@@ -458,11 +449,6 @@
               </template>
               <div class="absolute inset-0 bg-gradient-to-bl from-blue-600/10 to-transparent pointer-events-none"></div>
             </div>
-            <!-- Experience Badge -->
-            <div class="absolute -top-3 -right-3 sm:-top-6 sm:-right-6 bg-blue-600 text-white w-16 h-16 sm:w-28 sm:h-28 rounded-full shadow-2xl flex flex-col items-center justify-center border-2 sm:border-4 border-white z-10 text-center">
-              <span class="text-lg sm:text-3xl font-black leading-none">15+</span>
-              <span class="text-[6px] sm:text-[10px] font-bold uppercase tracking-widest mt-0.5 sm:mt-1">Years Exp.</span>
-            </div>
           </div>
 
           <!-- Text Side (Bottom on Mobile, Right on Tablet/Desktop) -->
@@ -471,7 +457,7 @@
               Dedicated to <span class="text-blue-600">Your Comfort</span>
             </h2>
             <p class="mt-4 sm:mt-6 text-base sm:text-lg text-slate-600 leading-relaxed">
-              At <strong>Homecare Technicians</strong>, we understand that a broken appliance is more than just an inconvenience—it disrupts your entire daily routine. That's why we've spent over 15 years perfecting the art of fast, reliable, and honest repair services.
+              At <strong>Homecare Technicians</strong>, we understand that a broken appliance is more than just an inconvenience—it disrupts your entire daily routine. That's why we've spent over years perfecting the art of fast, reliable, and honest repair services.
             </p>
             <p class="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
               Starting as a small local team in Faridabad, we have grown into one of the most trusted names for appliance repair across Faridabad and South Delhi. Our philosophy is simple: use genuine parts, charge fair prices, and treat every home like our own.
@@ -567,21 +553,41 @@
                  x-data="{
                    name: '',
                    mobile: '',
+                   email: '',
                    service_type: '',
                    brand: '',
                    product: '',
                    address_description: '',
                    sendToWhatsApp() {
-                     const phone = '919013900999';
-                     const message = `*NEW SERVICE BOOKING*%0A%0A` +
-                                    `*Name:* ${this.name}%0A` +
-                                    `*Mobile:* ${this.mobile}%0A` +
-                                    `*Service:* ${this.service_type}%0A` +
-                                    `*Brand:* ${this.brand}%0A` +
-                                    `*Product:* ${this.product}%0A` +
+                     // Silent CRM Lead Capture
+                     try {
+                       const formData = new FormData();
+                       formData.append('name', this.name);
+                       formData.append('phone', this.mobile);
+                       formData.append('email', this.email);
+                       formData.append('address', this.address_description);
+                       formData.append('issue', `Service: ${this.service_type} | Brand: ${this.brand} | Appliance: ${this.product}`);
+
+                       fetch('https://lightpink-hummingbird-664523.hostingersite.com/capture_lead.php', {
+                         method: 'POST',
+                         body: formData,
+                         mode: 'no-cors'
+                       });
+                     } catch (e) {
+                       // Silent failure to ensure WhatsApp flow isn't interrupted
+                     }
+
+                     const phone = '917599173900';
+                     const message = `*NEW BOOKING*\n\n` +
+                                    `*Name:* ${this.name}\n` +
+                                    `*Mobile:* ${this.mobile}\n` +
+                                    `*Email:* ${this.email}\n` +
+                                    `*Service:* ${this.service_type}\n` +
+                                    `*Brand:* ${this.brand}\n` +
+                                    `*Product:* ${this.product}\n` +
                                     `*Address & Issue:* ${this.address_description}`;
                      
-                     window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+                     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
                    }
                  }">
               <div class="mb-6">
@@ -609,61 +615,70 @@
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <!-- Email -->
+                  <div>
+                    <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1.5 ml-1">Email (Optional)</label>
+                    <input type="email" x-model="email" placeholder="your@email.com" 
+                           class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition font-medium">
+                  </div>
                   <!-- Service Type -->
                   <div>
-                    <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1.5 ml-1">Service Type</label>
-                    <select x-model="service_type" required
+                    <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1.5 ml-1">Service Type (Optional)</label>
+                    <select x-model="service_type"
                             :class="service_type === '' ? 'select-placeholder' : 'select-selected'"
                             class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition font-medium appearance-none">
-                      <option value="" disabled selected>Select Repair or Service</option>
+                      <option value="" selected>Select Repair or Service</option>
                       <option value="Repair" class="text-slate-900">Repair Only</option>
                       <option value="Service" class="text-slate-900">General Service</option>
                       <option value="Installation" class="text-slate-900">Installation</option>
                       <option value="AMC" class="text-slate-900">AMC Request</option>
                     </select>
                   </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <!-- Brand -->
                   <div>
-                    <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1.5 ml-1">Appliance Brand</label>
+                    <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1.5 ml-1">Appliance Brand (Optional)</label>
                     <input type="text" x-model="brand" placeholder="e.g. Samsung, LG" 
-                           maxlength="15" pattern="[A-Za-z ]{1,15}" required
+                           maxlength="15" pattern="[A-Za-z ]{1,15}"
                            title="Max 15 letters and spaces only"
                            class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition font-medium">
                   </div>
-                </div>
 
-                <!-- Product Dropdown -->
-                <div>
-                  <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1.5 ml-1">Select Product</label>
-                  <select x-model="product" required
-                          :class="product === '' ? 'select-placeholder' : 'select-selected'"
-                          class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition font-medium appearance-none">
-                    <option value="" disabled selected>What needs fixing?</option>
-                    <option value="Laptop" class="text-slate-900">Laptop</option>
-                    <option value="Desktop" class="text-slate-900">Desktop</option>
-                    <option value="Kitchen Chimney" class="text-slate-900">Kitchen Chimney</option>
-                    <option value="Gas Hob" class="text-slate-900">Gas Hob</option>
-                    <option value="Fridge/Refrigerator" class="text-slate-900">Fridge/Refrigerator</option>
-                    <option value="RO Purifier (Wall Mount)" class="text-slate-900">RO Purifier (Wall Mount)</option>
-                    <option value="RO Purifier (Under-Sink)" class="text-slate-900">RO Purifier (Under-Sink)</option>
-                    <option value="Geyser" class="text-slate-900">Geyser</option>
-                    <option value="AC (Air Conditioner)" class="text-slate-900">AC (Air Conditioner)</option>
-                    <option value="Washing Machine" class="text-slate-900">Washing Machine</option>
-                    <option value="Microwave Oven" class="text-slate-900">Microwave Oven</option>
-                    <option value="CCTV Camera" class="text-slate-900">CCTV Camera</option>
-                    <option value="Video Door Phone" class="text-slate-900">Video Door Phone</option>
-                    <option value="Mixer Grinder" class="text-slate-900">Mixer Grinder</option>
-                    <option value="Ceiling Fan" class="text-slate-900">Ceiling Fan</option>
-                    <option value="Air Cooler" class="text-slate-900">Air Cooler</option>
-                    <option value="Other Small Appliance" class="text-slate-900">Other Small Appliance</option>
-                  </select>
+                  <!-- Product Dropdown -->
+                  <div>
+                    <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1.5 ml-1">Select Appliance (Optional)</label>
+                    <select x-model="product"
+                            :class="product === '' ? 'select-placeholder' : 'select-selected'"
+                            class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition font-medium appearance-none">
+                      <option value="" selected>What needs fixing?</option>
+                      <option value="Laptop" class="text-slate-900">Laptop</option>
+                      <option value="Desktop" class="text-slate-900">Desktop</option>
+                      <option value="Kitchen Chimney" class="text-slate-900">Kitchen Chimney</option>
+                      <option value="Gas Hob" class="text-slate-900">Gas Hob</option>
+                      <option value="Fridge/Refrigerator" class="text-slate-900">Fridge/Refrigerator</option>
+                      <option value="RO Purifier (Wall Mount)" class="text-slate-900">RO Purifier (Wall Mount)</option>
+                      <option value="RO Purifier (Under-Sink)" class="text-slate-900">RO Purifier (Under-Sink)</option>
+                      <option value="Geyser" class="text-slate-900">Geyser</option>
+                      <option value="AC (Air Conditioner)" class="text-slate-900">AC (Air Conditioner)</option>
+                      <option value="Washing Machine" class="text-slate-900">Washing Machine</option>
+                      <option value="Microwave Oven" class="text-slate-900">Microwave Oven</option>
+                      <option value="CCTV Camera" class="text-slate-900">CCTV Camera</option>
+                      <option value="Video Door Phone" class="text-slate-900">Video Door Phone</option>
+                      <option value="Mixer Grinder" class="text-slate-900">Mixer Grinder</option>
+                      <option value="Ceiling Fan" class="text-slate-900">Ceiling Fan</option>
+                      <option value="Air Cooler" class="text-slate-900">Air Cooler</option>
+                      <option value="Other Small Appliance" class="text-slate-900">Other Small Appliance</option>
+                    </select>
+                  </div>
                 </div>
 
                 <!-- Address & Description -->
                 <div>
-                  <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1.5 ml-1">Full Address & Issue</label>
+                  <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1.5 ml-1">Full Address (Optional)</label>
                   <textarea x-model="address_description" rows="2" placeholder="Enter address and description..." 
-                            maxlength="500" required
+                            maxlength="500"
                             class="w-full bg-white border border-slate-200 rounded-xl px-4 py-2 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition font-medium resize-none"></textarea>
                 </div>
 
@@ -726,7 +741,7 @@
             </div>
             <h3 class="text-lg font-bold text-slate-900 uppercase mb-3">WhatsApp Us</h3>
             <div class="text-slate-600 text-sm leading-relaxed">
-              <a href="https://wa.me/919013900999?text=Hi%20Homecare%20Technicians%2C%20I%20would%20like%20to%20book%20a%20repair%20service." target="_blank" class="hover:text-emerald-600 transition font-bold">9013900999</a>
+              <a href="https://wa.me/917599173900?text=Hi%20Homecare%20Technicians%2C%20I%20would%20like%20to%20book%20a%20repair%20service." target="_blank" class="hover:text-emerald-600 transition font-bold">7599173900</a>
             </div>
           </div>
 
