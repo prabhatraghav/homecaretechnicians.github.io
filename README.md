@@ -1,5 +1,3 @@
-![Website](https://img.shields.io/website?url=https%3A%2F%2Fhomecaretechnicians.shop&label=homecaretechnicians.shop&link=https%3A%2F%2Fhomecaretechnicians.shop)
-
 # Homecare Technicians | Professional Appliance Repair
 
 Expert home appliance repair services in Faridabad and South Delhi. Fast, reliable, and guaranteed repairs for all major brands.
