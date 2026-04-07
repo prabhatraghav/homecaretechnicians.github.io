@@ -567,7 +567,7 @@
                        formData.append('phone', this.mobile);
                        formData.append('email', this.email);
                        formData.append('address', this.address_description);
-                       formData.append('issue', `I want to avail your services for: ${this.service_type} of ${this.brand} ${this.product} - $(this.address_description)`);
+                       formData.append('issue', `${this.service_type} of ${this.brand} ${this.product}`);
 
                        fetch('https://hct-crm.homecaretechnicians.shop/HCT-CRM/capture_lead.php', {
                          method: 'POST',
