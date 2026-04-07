@@ -560,7 +560,8 @@
                    address_description: '',
                    agreed: false,
                    sendToWhatsApp() {
-                     // Silent CRM Lead Capture
+                     
+					 // Silent CRM Lead Capture
                      try {
                        const formData = new FormData();
                        formData.append('name', this.name);
@@ -569,11 +570,20 @@
                        formData.append('address', this.address_description);
                        formData.append('issue', `${this.service_type} of ${this.brand} ${this.product}`);
 
-                       fetch('https://hct-crm.homecaretechnicians.shop/WhatsAppCRM/capture_lead.php', {
+                       // --- First Webhook (Existing) ---
+					   fetch('https://hct-crm.homecaretechnicians.shop/HCT-CRM/capture_lead.php', {
                          method: 'POST',
                          body: formData,
                          mode: 'no-cors'
                        });
+					   
+					   // --- Second Webhook (New) ---
+					   fetch('https://hct-crm.homecaretechnicians.shop/WhatsAppCRM/capture_lead.php', {
+                         method: 'POST',
+                         body: formData,
+                         mode: 'no-cors'
+                       });
+					   
                      } catch (e) {
                        // Silent failure to ensure WhatsApp flow isn't interrupted
                      }
