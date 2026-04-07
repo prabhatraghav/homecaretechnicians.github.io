@@ -569,7 +569,7 @@
                        formData.append('address', this.address_description);
                        formData.append('issue', `Service: ${this.service_type} | Brand: ${this.brand} | Appliance: ${this.product}`);
 
-                       fetch('https://lightpink-hummingbird-664523.hostingersite.com/HCT-CRM/capture_lead.php', {
+                       fetch('https://hct-crm.homecaretechnicians.shop/HCT-CRM/capture_lead.php', {
                          method: 'POST',
                          body: formData,
                          mode: 'no-cors'
