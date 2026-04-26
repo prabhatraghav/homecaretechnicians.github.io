@@ -622,6 +622,74 @@
       </div>
     </section>
 
+    <!-- Latest Insights Section -->
+    <section class="py-24 bg-white border-t border-slate-100 overflow-hidden" 
+             x-data="{ 
+               active: 0,
+               posts: [
+                 {
+                   category: 'RO Service',
+                   date: 'April 26, 2026',
+                   title: 'How Hard Water in Faridabad Affects Your RO Purifier',
+                   excerpt: 'Living in Faridabad means dealing with high TDS levels. Learn why your RO membrane fails faster and how to protect it...',
+                   link: '/blog/hard-water-faridabad-ro.html',
+                   image: '/images/ro-service-faridabad.webp',
+                   color: 'blue'
+                 },
+                 {
+                   category: 'AC Safety',
+                   date: 'April 26, 2026',
+                   title: 'Is Your AC a Fire Hazard? How Service Prevents Accidents',
+                   excerpt: 'Don\'t ignore the warning signs. Learn how regular maintenance prevents short circuits, compressor overheating, and fires...',
+                   link: '/blog/ac-safety-accidents.html',
+                   image: '/images/ac-servicing-faridabad.webp',
+                   color: 'red'
+                 }
+               ]
+             }">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-y-6">
+          <div class="max-w-2xl">
+            <h2 class="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl font-black uppercase">
+              Latest <span class="text-blue-600">Insights</span>
+            </h2>
+            <p class="mt-4 text-lg text-slate-600">
+              Expert advice, safety alerts, and maintenance tips from our professional technicians.
+            </p>
+          </div>
+          <a href="/blog/" class="inline-flex items-center gap-2 text-blue-600 font-black uppercase text-xs tracking-widest hover:text-blue-700 transition group">
+            View All Articles
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+
+        <!-- Carousel Container -->
+        <div class="relative">
+          <div class="flex gap-8 overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar">
+            <template x-for="(post, index) in posts" :key="index">
+              <article class="min-w-full md:min-w-[45%] lg:min-w-[30%] snap-start bg-slate-50 rounded-3xl overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-300">
+                <div class="aspect-video relative overflow-hidden">
+                  <img :src="post.image" :alt="post.title" class="w-full h-full object-cover">
+                  <div :class="`absolute top-4 left-4 bg-${post.color}-600 text-white text-[10px] font-bold uppercase px-3 py-1 rounded-full`" x-text="post.category"></div>
+                </div>
+                <div class="p-8">
+                  <div class="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-3" x-text="post.date"></div>
+                  <h3 class="text-xl font-black text-slate-900 uppercase mb-4 leading-tight">
+                    <a :href="post.link" class="hover:text-blue-600 transition" x-text="post.title"></a>
+                  </h3>
+                  <p class="text-slate-600 text-sm leading-relaxed mb-6" x-text="post.excerpt"></p>
+                  <a :href="post.link" class="text-blue-600 font-black uppercase text-xs tracking-widest inline-flex items-center gap-2 group">
+                    Read More
+                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"></path></svg>
+                  </a>
+                </div>
+              </article>
+            </template>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Contact Information Grid -->
     <load src="partials/contact.html" />
   </main>
