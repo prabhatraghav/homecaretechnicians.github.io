@@ -18,6 +18,7 @@ export default defineConfig({
         booking: resolve(__dirname, 'book-service.html'),
         blog: resolve(__dirname, 'blog/index.html'),
         hard_water_ro: resolve(__dirname, 'blog/hard-water-faridabad-ro.html'),
+        ac_safety: resolve(__dirname, 'blog/ac-safety-accidents.html'),
       },
     },
   },
