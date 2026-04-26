@@ -22,30 +22,11 @@
       
       <!-- Desktop Menu -->
       <div class="hidden xl:flex gap-x-8 text-sm font-bold uppercase tracking-widest text-slate-700">
-        <a href="/#services" class="hover:text-blue-600 transition">Our Services</a>
-        <a href="/#why-us" class="hover:text-blue-600 transition">Why Us</a>
-        <a href="/#about" class="hover:text-blue-600 transition">About Us</a>
-
-        <!-- ✅ Updated -->
-        <a href="/#quote-form"
-           @click.prevent="goTo('quote-form')"
-           class="hover:text-blue-600 transition text-blue-600 font-black">
-          Book Now
-        </a>
-		
-		<a href="/blog/"
-			@click.prevent="document.getElementById('insights') 
-				? goTo('insights') 
-				: window.location.href='/blog/'"
-			class="hover:text-blue-600 transition">
-			Insights
-		</a>
-
-        <a href="/#contact"
-           @click.prevent="goTo('contact')"
-           class="hover:text-blue-600 transition">
-          Contact Info
-        </a>
+        <a href="/" class="hover:text-blue-600 transition">Home</a>
+        <a href="/privacy-policy.html" class="hover:text-blue-600 transition">Privacy-Policy</a>
+        <a href="/terms-of-service.html" class="hover:text-blue-600 transition">Service-Terms</a>
+		<a href="/legal-disclaimer.html" class="hover:text-blue-600 transition">Legal-Disclaimer</a>
+		<a href="/data-deletion.html" class="hover:text-blue-600 transition">Data-Deletion</a>
 
       </div>
 
@@ -79,9 +60,11 @@
        @click.away="mobileMenuOpen = false"
        style="display: none;">
     <div class="px-4 py-6 flex flex-col gap-y-4 text-center">
-      <a href="/#services" @click="mobileMenuOpen = false" class="py-2 text-sm font-bold uppercase tracking-widest text-slate-700 hover:text-blue-600 transition">Our Services</a>
-      <a href="/#why-us" @click="mobileMenuOpen = false" class="py-2 text-sm font-bold uppercase tracking-widest text-slate-700 hover:text-blue-600 transition">Why Us</a>
-      <a href="/#about" @click="mobileMenuOpen = false" class="py-2 text-sm font-bold uppercase tracking-widest text-slate-700 hover:text-blue-600 transition">About Us</a>
+      <a href="/" @click="mobileMenuOpen = false" class="py-2 text-sm font-bold uppercase tracking-widest text-slate-700 hover:text-blue-600 transition">Home</a>
+	  <a href="/privacy-policy.html" @click="mobileMenuOpen = false" class="py-2 text-sm font-bold uppercase tracking-widest text-slate-700 hover:text-blue-600 transition">Privacy Policy</a>
+      <a href="/terms-of-service.html" @click="mobileMenuOpen = false" class="py-2 text-sm font-bold uppercase tracking-widest text-slate-700 hover:text-blue-600 transition">Terms of Service</a>
+      <a href="/legal-disclaimer.html" @click="mobileMenuOpen = false" class="py-2 text-sm font-bold uppercase tracking-widest text-slate-700 hover:text-blue-600 transition">Legal Disclaimer</a>
+	  <a href="/data-deletion.html" @click="mobileMenuOpen = false" class="py-2 text-sm font-bold uppercase tracking-widest text-slate-700 hover:text-blue-600 transition">Data Deletion</a>
 
 
       <!-- ✅ Updated -->
