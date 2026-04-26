@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appliance Care Blog | Homecare Technicians Faridabad</title>
+  <meta name="description" content="Expert tips, maintenance guides, and appliance repair advice for residents of Faridabad and South Delhi. Learn how to keep your home running smoothly.">
+  <link rel="canonical" href="https://homecaretechnicians.com/blog/" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/src/main.css">
+  
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="flex min-h-screen flex-col bg-white antialiased">
+
+  <load src="partials/header.html" />
+
+  <main class="flex-auto">
+    <!-- Blog Hero -->
+    <section class="bg-slate-900 py-20">
+      <div class="container mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-5xl font-black text-white uppercase tracking-tight mb-4">
+          Appliance Care <span class="text-blue-500">Insights</span>
+        </h1>
+        <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+          Expert advice and maintenance tips specifically for the climate and conditions of Faridabad & South Delhi.
+        </p>
+      </div>
+    </section>
+
+    <!-- Blog Posts Grid -->
+    <section class="py-24 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          
+          <!-- Post 1 -->
+          <article class="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl transition-shadow duration-300">
+            <div class="aspect-video relative overflow-hidden">
+              <img src="/images/refrigerator-service.webp" alt="RO Water Purifier Service" class="w-full h-full object-cover">
+              <div class="absolute top-4 left-4 bg-blue-600 text-white text-[10px] font-bold uppercase px-3 py-1 rounded-full">RO Service</div>
+            </div>
+            <div class="p-8">
+              <div class="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-3">April 26, 2026</div>
+              <h2 class="text-xl font-black text-slate-900 uppercase mb-4 leading-tight">
+                <a href="/blog/hard-water-faridabad-ro.html" class="hover:text-blue-600 transition">How Hard Water in Faridabad Affects Your RO Purifier</a>
+              </h2>
+              <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                Living in Faridabad means dealing with high TDS levels. Learn why your RO membrane fails faster and how to protect it...
+              </p>
+              <a href="/blog/hard-water-faridabad-ro.html" class="text-blue-600 font-black uppercase text-xs tracking-widest inline-flex items-center gap-2 group">
+                Read Full Article
+                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"></path></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- More posts can be added here -->
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <load src="partials/footer.html" />
+
+</body>
+</html>

@@ -16,6 +16,8 @@ export default defineConfig({
         surajkund: resolve(__dirname, 'ac-servicing-surajkund.html'),
         ro: resolve(__dirname, 'ro-servicing-faridabad.html'),
         booking: resolve(__dirname, 'book-service.html'),
+        blog: resolve(__dirname, 'blog/index.html'),
+        hard_water_ro: resolve(__dirname, 'blog/hard-water-faridabad-ro.html'),
       },
     },
   },
