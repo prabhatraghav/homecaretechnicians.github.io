@@ -3,8 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Homecare Technicians | Professional Appliance Repair</title>
-  <meta name="description" content="Expert home appliance repair services.">
+  <title>Homecare Technicians | Professional Appliance Repair in Faridabad</title>
+  <meta name="description" content="Expert home appliance repair services in Faridabad & South Delhi. We fix ACs, Washing Machines, Fridges, and more with a 90-day warranty.">
+  <link rel="canonical" href="https://homecaretechnicians.com/" />
+  
+  <!-- Google Search Console Verification -->
+  <meta name="google-site-verification" content="oDuZg10j7jx4siVUBcvjZhHIxUuaRUnj0ULSptAd_r0" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://homecaretechnicians.com/">
+  <meta property="og:title" content="Homecare Technicians | Professional Appliance Repair">
+  <meta property="og:description" content="Expert home appliance repair services in Faridabad & South Delhi. 90-day warranty on all repairs.">
+  <meta property="og:image" content="https://homecaretechnicians.com/logo.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://homecaretechnicians.com/">
+  <meta property="twitter:title" content="Homecare Technicians | Professional Appliance Repair">
+  <meta property="twitter:description" content="Expert home appliance repair services in Faridabad & South Delhi. 90-day warranty on all repairs.">
+  <meta property="twitter:image" content="https://homecaretechnicians.com/logo.png">
+
+  <!-- Local Business Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Homecare Technicians",
+    "image": "https://homecaretechnicians.com/logo.png",
+    "@id": "https://homecaretechnicians.com",
+    "url": "https://homecaretechnicians.com",
+    "telephone": "+917599173900",
+    "email": ["admin@homecaretechnicians.com", "technicians.homecare@gmail.com"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "A2500, Greenfields",
+      "addressLocality": "Faridabad",
+      "addressRegion": "Haryana",
+      "postalCode": "121010",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 28.4595,
+      "longitude": 77.3260
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "09:00",
+        "closes": "21:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Sunday",
+        "opens": "10:00",
+        "closes": "20:00"
+      }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/HomecareTechnicians/",
+      "https://www.instagram.com/homecare.technicians",
+      "https://www.youtube.com/@HomecareTechnicians"
+    ],
+    "priceRange": "₹₹"
+  }
+  </script>
   
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -571,14 +636,14 @@
                        formData.append('issue', `${this.service_type} of ${this.brand} ${this.product}`);
 
                        // --- First Webhook (Existing) ---
-					   fetch('https://hct-crm.homecaretechnicians.shop/HCT-CRM/capture_lead.php', {
+					   fetch('https://hct-crm.homecaretechnicians.com/HCT-CRM/capture_lead.php', {
                          method: 'POST',
                          body: formData,
                          mode: 'no-cors'
                        });
 					   
 					   // --- Second Webhook (New) ---
-					   fetch('https://hct-crm.homecaretechnicians.shop/WhatsAppCRM/capture_lead.php', {
+					   fetch('https://hct-crm.homecaretechnicians.com/WhatsAppCRM/capture_lead.php', {
                          method: 'POST',
                          body: formData,
                          mode: 'no-cors'
@@ -734,14 +799,14 @@
           </p>
         </div>
 
-        <div class="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        <div class="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
           <!-- Address -->
           <div class="bg-slate-50 rounded-3xl p-8 shadow-sm border border-slate-100 flex flex-col items-center text-center">
             <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mb-6">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
             </div>
             <h3 class="text-lg font-bold text-slate-900 uppercase mb-3">Address</h3>
-            <p class="text-slate-600 text-sm leading-relaxed font-medium">2500, Greenfield, Faridabad, Haryana</p>
+            <p class="text-slate-600 text-sm leading-relaxed font-medium">A2500, Greenfields, Faridabad, Haryana, 121010</p>
           </div>
 
           <!-- Call Us -->
@@ -753,6 +818,18 @@
             <div class="text-slate-600 text-sm leading-relaxed flex flex-col gap-1">
               <a href="tel:7599173900" class="hover:text-blue-600 transition font-bold">7599173900</a>
               <a href="tel:8130722099" class="hover:text-blue-600 transition font-bold">8130722099</a>
+            </div>
+          </div>
+
+          <!-- Email Us -->
+          <div class="bg-slate-50 rounded-3xl p-8 shadow-sm border border-slate-100 flex flex-col items-center text-center">
+            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mb-6">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 00-2 2z"></path></svg>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 uppercase mb-3">Email Us</h3>
+            <div class="text-slate-600 text-[10px] sm:text-xs leading-relaxed flex flex-col gap-1">
+              <a href="mailto:admin@homecaretechnicians.com" class="hover:text-blue-600 transition font-bold break-all">admin@homecaretechnicians.com</a>
+              <a href="mailto:technicians.homecare@gmail.com" class="hover:text-blue-600 transition font-bold break-all">technicians.homecare@gmail.com</a>
             </div>
           </div>
 
