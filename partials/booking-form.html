@@ -1,0 +1,167 @@
+            <div id="quote-form" class="scroll-mt-24 bg-white rounded-[2.5rem] p-6 sm:p-10 border border-slate-100 shadow-sm"
+                 x-data="{
+                   name: '',
+                   mobile: '',
+                   email: '',
+                   service_type: '',
+                   brand: '',
+                   product: '',
+                   address_description: '',
+                   agreed: false,
+                   sendToWhatsApp() {
+                     
+					 // Silent CRM Lead Capture
+                     try {
+                       const formData = new FormData();
+                       formData.append('name', this.name);
+                       formData.append('phone', this.mobile);
+                       formData.append('email', this.email);
+                       formData.append('address', this.address_description);
+                       formData.append('issue', `${this.service_type} of ${this.brand} ${this.product}`);
+
+                       // --- First Webhook (Existing) ---
+					   fetch('https://hct-crm.homecaretechnicians.com/HCT-CRM/capture_lead.php', {
+                         method: 'POST',
+                         body: formData,
+                         mode: 'no-cors'
+                       });
+					   
+					   // --- Second Webhook (New) ---
+					   fetch('https://hct-crm.homecaretechnicians.com/WhatsAppCRM/capture_lead.php', {
+                         method: 'POST',
+                         body: formData,
+                         mode: 'no-cors'
+                       });
+					   
+                     } catch (e) {
+                       // Silent failure to ensure WhatsApp flow isn't interrupted
+                     }
+
+                     const phone = '917599173900';
+                     const message = `*NEW BOOKING*\n\n` +
+                                    `*Name:* ${this.name}\n` +
+                                    `*Mobile:* ${this.mobile}\n` +
+                                    `*Email:* ${this.email}\n` +
+                                    `*Service:* ${this.service_type}\n` +
+                                    `*Brand:* ${this.brand}\n` +
+                                    `*Product:* ${this.product}\n` +
+                                    `*Address & Issue:* ${this.address_description}`;
+                     
+                     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+                   }
+                 }">
+              <div class="mb-6">
+                <h3 class="text-xl font-black text-slate-900 uppercase tracking-tight">Get A <span class="text-blue-600">Free Quote</span></h3>
+              </div>
+              <form @submit.prevent="sendToWhatsApp()" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <!-- Name -->
+                  <div>
+                    <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1.5 ml-1">Full Name</label>
+                    <input type="text" x-model="name" placeholder="Enter your name" 
+                           maxlength="25" pattern="[A-Za-z ]{1,25}" required
+                           title="Max 25 letters and spaces only"
+                           class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition font-medium">
+                  </div>
+                  <!-- Mobile -->
+                  <div>
+                    <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1.5 ml-1">Mobile Number</label>
+                    <input type="text" x-model="mobile" placeholder="10-digit mobile no." 
+                           maxlength="10" minlength="10" pattern="[0-9]{10}" required
+                           oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                           title="Please enter exactly 10 digits"
+                           class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition font-medium">
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <!-- Email -->
+                  <div>
+                    <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1.5 ml-1">Email (Optional)</label>
+                    <input type="email" x-model="email" placeholder="your@email.com" 
+                           class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition font-medium">
+                  </div>
+                  <!-- Service Type -->
+                  <div>
+                    <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1.5 ml-1">Service Type (Optional)</label>
+                    <select x-model="service_type"
+                            :class="service_type === '' ? 'select-placeholder' : 'select-selected'"
+                            class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition font-medium appearance-none">
+                      <option value="" selected>Select Repair or Service</option>
+                      <option value="Repair" class="text-slate-900">Repair Only</option>
+                      <option value="Service" class="text-slate-900">General Service</option>
+                      <option value="Installation" class="text-slate-900">Installation</option>
+                      <option value="AMC" class="text-slate-900">AMC Request</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <!-- Brand -->
+                  <div>
+                    <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1.5 ml-1">Appliance Brand (Optional)</label>
+                    <input type="text" x-model="brand" placeholder="e.g. Samsung, LG" 
+                           maxlength="15" pattern="[A-Za-z ]{1,15}"
+                           title="Max 15 letters and spaces only"
+                           class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition font-medium">
+                  </div>
+
+                  <!-- Product Dropdown -->
+                  <div>
+                    <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1.5 ml-1">Select Appliance (Optional)</label>
+                    <select x-model="product"
+                            :class="product === '' ? 'select-placeholder' : 'select-selected'"
+                            class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition font-medium appearance-none">
+                      <option value="" selected>What needs fixing?</option>
+                      <option value="Laptop" class="text-slate-900">Laptop</option>
+                      <option value="Desktop" class="text-slate-900">Desktop</option>
+                      <option value="Kitchen Chimney" class="text-slate-900">Kitchen Chimney</option>
+                      <option value="Gas Hob" class="text-slate-900">Gas Hob</option>
+                      <option value="Fridge/Refrigerator" class="text-slate-900">Fridge/Refrigerator</option>
+                      <option value="RO Purifier (Wall Mount)" class="text-slate-900">RO Purifier (Wall Mount)</option>
+                      <option value="RO Purifier (Under-Sink)" class="text-slate-900">RO Purifier (Under-Sink)</option>
+                      <option value="Geyser" class="text-slate-900">Geyser</option>
+                      <option value="AC (Air Conditioner)" class="text-slate-900">AC (Air Conditioner)</option>
+                      <option value="Washing Machine" class="text-slate-900">Washing Machine</option>
+                      <option value="Microwave Oven" class="text-slate-900">Microwave Oven</option>
+                      <option value="CCTV Camera" class="text-slate-900">CCTV Camera</option>
+                      <option value="Video Door Phone" class="text-slate-900">Video Door Phone</option>
+                      <option value="Mixer Grinder" class="text-slate-900">Mixer Grinder</option>
+                      <option value="Ceiling Fan" class="text-slate-900">Ceiling Fan</option>
+                      <option value="Air Cooler" class="text-slate-900">Air Cooler</option>
+                      <option value="Other Small Appliance" class="text-slate-900">Other Small Appliance</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Address & Description -->
+                <div>
+                  <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1.5 ml-1">Full Address (Optional)</label>
+                  <textarea x-model="address_description" rows="2" placeholder="Enter address and description..." 
+                            maxlength="500"
+                            class="w-full bg-white border border-slate-200 rounded-xl px-4 py-2 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition font-medium resize-none"></textarea>
+                </div>
+
+                <!-- Terms & Conditions Checkbox -->
+                <div class="flex items-start gap-x-3 py-2 px-1">
+                  <div class="flex items-center h-5">
+                    <input type="checkbox" x-model="agreed" required
+                           class="w-4 h-4 text-blue-600 border-slate-300 rounded focus:ring-blue-600 transition cursor-pointer">
+                  </div>
+                  <label class="text-[11px] leading-tight text-slate-600 font-medium cursor-pointer">
+                    I authorize Homecare Technicians to contact me and I also agree to the <a href="/terms-of-service.html" class="text-blue-600 hover:underline font-bold">terms of service</a>, <a href="/privacy-policy.html" class="text-blue-600 hover:underline font-bold">privacy policy</a> and <a href="/legal-disclaimer.html" class="text-blue-600 hover:underline font-bold">legal disclaimer</a> of Homecare Technicians.
+                  </label>
+                </div>
+
+                <!-- Security & Submit -->
+                <div class="flex flex-col items-center gap-3 pt-3 border-t border-slate-100 mt-2">
+                  <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-x-2 bg-emerald-600 text-white px-8 py-3 rounded-xl font-black uppercase tracking-widest text-sm hover:bg-emerald-700 shadow-xl shadow-emerald-600/20 transition transform active:scale-95">
+                    Book Your Service or Repair Now
+                  </button>
+                  <div class="flex items-center gap-x-2 text-emerald-600">
+                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    <span class="text-[10px] font-bold uppercase tracking-widest">End-to-End Encrypted</span>
+                  </div>
+                </div>
+              </form>
+            </div>

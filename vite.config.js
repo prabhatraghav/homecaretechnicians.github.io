@@ -1,9 +1,13 @@
 import { defineConfig } from 'vite'
 import tailwindcss from '@tailwindcss/vite'
+import injectHTML from 'vite-plugin-html-inject'
 import { resolve } from 'path'
 
 export default defineConfig({
-  plugins: [tailwindcss()],
+  plugins: [
+    tailwindcss(),
+    injectHTML(),
+  ],
   build: {
     rollupOptions: {
       input: {
@@ -11,6 +15,7 @@ export default defineConfig({
         faridabad: resolve(__dirname, 'ac-servicing-faridabad.html'),
         surajkund: resolve(__dirname, 'ac-servicing-surajkund.html'),
         ro: resolve(__dirname, 'ro-servicing-faridabad.html'),
+        booking: resolve(__dirname, 'book-service.html'),
       },
     },
   },
