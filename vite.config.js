@@ -19,6 +19,8 @@ export default defineConfig({
         blog: resolve(__dirname, 'blog/index.html'),
         hard_water_ro: resolve(__dirname, 'blog/hard-water-faridabad-ro.html'),
         ac_safety: resolve(__dirname, 'blog/ac-safety-accidents.html'),
+        chimney_safety: resolve(__dirname, 'blog/chimney-fire-safety.html'),
+        hob_maintenance: resolve(__dirname, 'blog/gas-hob-maintenance.html'),
         privacy: resolve(__dirname, 'privacy-policy.html'),
         terms: resolve(__dirname, 'terms-of-service.html'),
         disclaimer: resolve(__dirname, 'legal-disclaimer.html'),
