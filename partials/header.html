@@ -2,10 +2,10 @@
   class="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-slate-100 py-1.5 shadow-sm" 
   x-data="{ 
     mobileMenuOpen: false,
-    goTo(id) {
+    goTo(id, offset) {
       const el = document.getElementById(id);
       if (el) {
-        const y = el.getBoundingClientRect().top + window.pageYOffset - 80; // offset for sticky header
+        const y = el.getBoundingClientRect().top + window.pageYOffset - offset;
         window.scrollTo({ top: y, behavior: 'smooth' });
       } else {
         window.location.href = '/#' + id;
@@ -22,27 +22,27 @@
       
       <!-- Desktop Menu -->
       <div class="hidden xl:flex gap-x-8 text-sm font-bold uppercase tracking-widest text-slate-700">
-        <a href="/#services" class="hover:text-blue-600 transition">Our Services</a>
-        <a href="/#why-us" class="hover:text-blue-600 transition">Why Us</a>
-        <a href="/#about" class="hover:text-blue-600 transition">About Us</a>
+        <a href="/#services" @click.prevent="goTo('services', 30)" class="hover:text-blue-600 transition">Our Services</a>
+        <a href="/#why-us" @click.prevent="goTo('why-us', 20)" class="hover:text-blue-600 transition">Why Us</a>
+        <a href="/#about" @click.prevent="goTo('about', 20)" class="hover:text-blue-600 transition">About Us</a>
 
         <!-- ✅ Updated -->
         <a href="/#quote-form"
-           @click.prevent="goTo('quote-form')"
+           @click.prevent="goTo('quote-form', 90)"
            class="hover:text-blue-600 transition text-blue-600 font-black">
           Book Now
         </a>
 		
 		<a href="/blog/"
 			@click.prevent="document.getElementById('insights') 
-				? goTo('insights') 
+				? goTo('insights', 10) 
 				: window.location.href='/blog/'"
 			class="hover:text-blue-600 transition">
 			Insights
 		</a>
 
         <a href="/#contact"
-           @click.prevent="goTo('contact')"
+           @click.prevent="goTo('contact', 70)"
            class="hover:text-blue-600 transition">
           Contact Info
         </a>
@@ -52,7 +52,7 @@
       <div class="flex items-center gap-2 lg:gap-4">
         <!-- ✅ Updated Button -->
         <a href="/#quote-form"
-           @click.prevent="goTo('quote-form')"
+           @click.prevent="goTo('quote-form', 90)"
            class="hidden sm:inline-flex items-center rounded-full bg-blue-600 px-6 py-2.5 text-sm font-bold text-white hover:bg-blue-700 shadow-lg shadow-blue-600/20 transition transform active:scale-95 uppercase tracking-wider whitespace-nowrap">
           Get a Free Quote
         </a>
@@ -79,35 +79,35 @@
        @click.away="mobileMenuOpen = false"
        style="display: none;">
     <div class="px-4 py-6 flex flex-col gap-y-4 text-center">
-      <a href="/#services" @click="mobileMenuOpen = false" class="py-2 text-sm font-bold uppercase tracking-widest text-slate-700 hover:text-blue-600 transition">Our Services</a>
-      <a href="/#why-us" @click="mobileMenuOpen = false" class="py-2 text-sm font-bold uppercase tracking-widest text-slate-700 hover:text-blue-600 transition">Why Us</a>
-      <a href="/#about" @click="mobileMenuOpen = false" class="py-2 text-sm font-bold uppercase tracking-widest text-slate-700 hover:text-blue-600 transition">About Us</a>
+      <a href="/#services" @click.prevent="goTo('services', 0); mobileMenuOpen = false" class="py-2 text-sm font-bold uppercase tracking-widest text-slate-700 hover:text-blue-600 transition">Our Services</a>
+      <a href="/#why-us" @click.prevent="goTo('why-us', 0); mobileMenuOpen = false" class="py-2 text-sm font-bold uppercase tracking-widest text-slate-700 hover:text-blue-600 transition">Why Us</a>
+      <a href="/#about" @click.prevent="goTo('about', 0); mobileMenuOpen = false" class="py-2 text-sm font-bold uppercase tracking-widest text-slate-700 hover:text-blue-600 transition">About Us</a>
 
 
       <!-- ✅ Updated -->
       <a href="/#quote-form"
-         @click.prevent="goTo('quote-form'); mobileMenuOpen = false"
+         @click.prevent="goTo('quote-form', 60); mobileMenuOpen = false"
          class="py-2 text-sm font-bold uppercase tracking-widest text-blue-600 font-black">
         Book Now
       </a>
 	  
 	  <a href="/blog/"
 			@click.prevent="document.getElementById('insights') 
-			? (goTo('insights'), mobileMenuOpen = false) 
+			? (goTo('insights', 0), mobileMenuOpen = false) 
 			: window.location.href='/blog/'"
 		 class="py-2 text-sm font-bold uppercase tracking-widest text-slate-700 hover:text-blue-600 transition">
 		 Insights
 	  </a>
 
       <a href="/#contact"
-         @click.prevent="goTo('contact'); mobileMenuOpen = false"
+         @click.prevent="goTo('contact', 0); mobileMenuOpen = false"
          class="py-2 text-sm font-bold uppercase tracking-widest text-slate-700 hover:text-blue-600 transition">
         Contact Info
       </a>
 
       <!-- ✅ Updated Button -->
       <a href="/#quote-form"
-         @click.prevent="goTo('quote-form'); mobileMenuOpen = false"
+         @click.prevent="goTo('quote-form', 60); mobileMenuOpen = false"
          class="mt-2 inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-bold text-white hover:bg-blue-700 transition uppercase tracking-widest sm:hidden shadow-lg shadow-blue-600/20">
         Get a Free Quote
       </a>
