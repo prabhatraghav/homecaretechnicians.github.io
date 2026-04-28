@@ -102,13 +102,19 @@
                    description: 'Fast, reliable, and guaranteed repairs for all major brands. Get your appliances fixed by certified professionals today.',
                    image: 'images/homecaretechnicians-main-slider.webp'
                  },
+				 { 
+                   title: 'CHIMNEY & GAS HOB TECHNICIAN', 
+                   subtitle: 'SMOKE-FREE & EFFICIENT KITCHEN',
+                   description: 'Professional chimney cleaning, motor repair, and gas hob maintenance to keep your kitchen running smoothly.',
+                   image: 'images/homecaretechnicians-chimney-hob-slider.webp'
+                 },
                  {
-                   title: 'AC REPAIR & SERVICING EXPERTS',
+                   title: 'SPLIT AC SERVICING EXPERTS',
                    subtitle: 'SAME DAY SERVICE AT YOUR DOORSTEP',
-				   description: 'From Split AC servicing to Window AC repairs, we use only genuine parts and offer a 90-day warranty.',
+				   description: 'From Split AC servicing to Window AC servicing, Ac service done within an hour with pressure washer.',
                    image: 'images/homecaretechnicians-ac-slider.webp'
                  },
-                 { 
+            /*   { 
                    title: 'WASHING MACHINE SPECIALISTS', 
                    subtitle: 'QUICK FIXES FOR ALL MAJOR BRANDS',
                    description: 'Expert repair for front-load, top-load, and semi-automatic machines. We fix leaks, motor issues, and PCB problems.',
@@ -119,13 +125,8 @@
                    subtitle: 'KEEP YOUR FOOD FRESH & COLD',
                    description: 'Specialized in cooling issues, gas refilling, compressor repairs, and sensor troubleshooting for all major brands.',
                    image: 'images/homecaretechnicians-regrigerator-slider.webp'
-                 },
-                 { 
-                   title: 'CHIMNEY & GAS HOB TECHNICIAN', 
-                   subtitle: 'SMOKE-FREE & EFFICIENT KITCHEN',
-                   description: 'Professional chimney cleaning, motor repair, and gas hob maintenance to keep your kitchen running smoothly.',
-                   image: 'images/homecaretechnicians-chimney-hob-slider.webp'
                  }
+			*/
                ],
                next() { this.activeSlide = (this.activeSlide + 1) % this.slides.length },
                prev() { this.activeSlide = (this.activeSlide - 1 + this.slides.length) % this.slides.length },
@@ -188,51 +189,68 @@
              x-data="{ 
                services: [
                  {
-                   title: 'AC Repair & Service',
-                   description: 'Complete AC servicing, gas charging, installation, and repair for all Split and Window AC units.',
-                   image: '/images/ac-repair-service.webp'
+                   title: 'RO Purifier Service',
+                   description: 'Expert RO repair and maintenance. Filter replacement, membrane cleaning, and water quality testing for all brands.',
+                   image: '/images/ro-servicing-in-faridabad.webp',
+                   link: '/ro-servicing-faridabad.html#quote-form'
                  },
-                 {
-                   title: 'Washing Machine',
-                   description: 'Expert repair for front-load, top-load, and semi-automatic machines. We fix leaks, motor issues, and PCB problems.',
-                   image: '/images/washing-machine.webp'
-                 },
-                 {
-                   title: 'Refrigerator',
-                   description: 'Specialized in cooling issues, gas refilling, compressor repairs, and sensor troubleshooting for all major brands.',
-                   image: '/images/refrigerator-service.webp'
-                 },
-                 {
-                   title: 'LED TV',
-                   description: 'Expert diagnosis and repair for display issues, sound problems, and motherboard failures for all smart TVs.',
-                   image: '/images/led-tv-service.webp'
-                 },
-                 {
-                   title: 'Microwave Oven',
-                   description: 'Fast solutions for heating problems, spark issues, turntable malfunctions, and control panel repairs.',
-                   image: '/images/microwave-service.webp'
-                 },
-                 {
+				 {
                    title: 'Kitchen Chimney',
                    description: 'Professional chimney cleaning, motor repair, suction troubleshooting, and installation services.',
-                   image: '/images/kitchen-chimney-service.webp'
+                   image: '/images/kitchen-chimney-servicing-in-faridabad.webp',
+				   link: '/chimney-deep-clean-faridabad.html#quote-form'
                  },
                  {
                    title: 'Gas Hob / Stove',
                    description: 'Expert repair for gas leakage, burner issues, and ignition problems for all major cooktop brands.',
-                   image: '/images/kitchen-hob-service.webp'
+                   image: '/images/hob-servicing-in-faridabad.webp',
+				   link: '/gas-hob-deep-clean-faridabad.html#quote-form'
+                 },
+				 {
+                   title: 'AC Repair & Service',
+                   description: 'Complete AC servicing, gas charging, installation, and repair for all Split and Window AC units.',
+                   image: '/images/ac-servicing-in-faridabad.webp',
+				   link: '/ac-servicing-faridabad.html#quote-form'
                  },
                  {
-                   title: 'Laptop & Computer',
-                   description: 'Fast repair for hardware issues, screen replacement, software troubleshooting, and performance upgrades.',
-                   image: '/images/laptop-computer-service.webp'
+                   title: 'Washing Machine',
+                   description: 'Expert repair for semi-automatic machines. We fix leaks, motor issues, and PCB problems.',
+                   image: '/images/washing-machine.webp',
+				   link: '#quote-form'
+                 },
+            /*   {
+                   title: 'Refrigerator',
+                   description: 'Specialized in cooling issues, gas refilling, compressor repairs, and sensor troubleshooting for all major brands.',
+                   image: '/images/refrigerator-service.webp',
+				   link: '#quote-form'
+                 },
+                 {
+                   title: 'LED TV',
+                   description: 'Expert diagnosis and repair for display issues, sound problems, and motherboard failures for all smart TVs.',
+                   image: '/images/led-tv-service.webp',
+				   link: '#quote-form'
+                 }
+                 
+			*/
+                 {
+                   title: 'Microwave Oven',
+                   description: 'Fast solutions for heating problems, spark issues, turntable malfunctions, and control panel repairs.',
+                   image: '/images/microwave-service.webp',
+				   link: '#quote-form'
+                 },
+                 {
+                   title: 'Laptop & Desktop',
+                   description: 'Fast repair for hardware issues, screen & Keyboard replacement, software troubleshooting, and performance upgrades.',
+                   image: '/images/laptop-computer-service.webp',
+				   link: '#quote-form'
                  },
                  {
                    title: 'CCTV Camera',
                    description: 'Comprehensive CCTV installation, maintenance, and repair for home and office security systems.',
-                   image: '/images/cctv-camera.webp'
+                   image: '/images/cctv-camera.webp',
+				   link: '#quote-form'
                  }
-               ],
+			   ],
                init() {
                  setInterval(() => {
                    this.next();
@@ -287,7 +305,7 @@
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 uppercase" x-text="service.title"></h3>
                 <p class="mt-4 text-slate-600 leading-relaxed text-sm" x-text="service.description"></p>
-                <a href="#quote-form" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover/card:text-blue-700 uppercase">
+                <a :href="service.link" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover/card:text-blue-700 uppercase">
                   BOOK NOW <svg class="ml-2 w-4 h-4 transition-transform group-hover/card:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"></path></svg>
                 </a>
               </div>

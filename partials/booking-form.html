@@ -87,11 +87,11 @@
                     <select x-model="service_type"
                             :class="service_type === '' ? 'select-placeholder' : 'select-selected'"
                             class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition font-medium appearance-none">
-                      <option value="" selected>Select Repair or Service</option>
+                      <option value="" selected>Select AMC/Service/Repair</option>
                       <option value="Repair" class="text-slate-900">Repair Only</option>
-                      <option value="Service" class="text-slate-900">General Service</option>
-                      <option value="Installation" class="text-slate-900">Installation</option>
-                      <option value="AMC" class="text-slate-900">AMC Request</option>
+                      <option value="Service" class="text-slate-900">Service only (General Maintenance)</option>
+                      <option value="Installation" class="text-slate-900">Installation/deinstallation</option>
+                      <option value="AMC" class="text-slate-900">AMC Purchase</option>
                     </select>
                   </div>
                 </div>
@@ -113,23 +113,26 @@
                             :class="product === '' ? 'select-placeholder' : 'select-selected'"
                             class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition font-medium appearance-none">
                       <option value="" selected>What needs fixing?</option>
+					  <option value="Kitchen Chimney" class="text-slate-900">Kitchen Chimney</option>
+                      <option value="Gas Hob" class="text-slate-900">Gas Hob</option>
+					  <option value="RO Purifier (Wall Mount)" class="text-slate-900">RO Purifier (Wall Mount)</option>
+                      <option value="RO Purifier (Under-Sink)" class="text-slate-900">RO Purifier (Under-Sink)</option>
+					  <option value="AC (Air Conditioner)" class="text-slate-900">AC (Servicing Only)</option>
+					  <option value="Washing Machine" class="text-slate-900">Washing Machine (Semi-automatic only)</option>
+					  <option value="Microwave Oven" class="text-slate-900">Microwave Oven</option>
                       <option value="Laptop" class="text-slate-900">Laptop</option>
                       <option value="Desktop" class="text-slate-900">Desktop</option>
-                      <option value="Kitchen Chimney" class="text-slate-900">Kitchen Chimney</option>
-                      <option value="Gas Hob" class="text-slate-900">Gas Hob</option>
-                      <option value="Fridge/Refrigerator" class="text-slate-900">Fridge/Refrigerator</option>
-                      <option value="RO Purifier (Wall Mount)" class="text-slate-900">RO Purifier (Wall Mount)</option>
-                      <option value="RO Purifier (Under-Sink)" class="text-slate-900">RO Purifier (Under-Sink)</option>
-                      <option value="Geyser" class="text-slate-900">Geyser</option>
-                      <option value="AC (Air Conditioner)" class="text-slate-900">AC (Air Conditioner)</option>
-                      <option value="Washing Machine" class="text-slate-900">Washing Machine</option>
-                      <option value="Microwave Oven" class="text-slate-900">Microwave Oven</option>
-                      <option value="CCTV Camera" class="text-slate-900">CCTV Camera</option>
+					  <option value="Geyser" class="text-slate-900">Geyser</option>
+					  <option value="CCTV Camera" class="text-slate-900">CCTV Camera</option>
                       <option value="Video Door Phone" class="text-slate-900">Video Door Phone</option>
-                      <option value="Mixer Grinder" class="text-slate-900">Mixer Grinder</option>
-                      <option value="Ceiling Fan" class="text-slate-900">Ceiling Fan</option>
-                      <option value="Air Cooler" class="text-slate-900">Air Cooler</option>
+					  <option value="Mixer Grinder" class="text-slate-900">Mixer Grinder</option>
+					  <option value="Ceiling Fan" class="text-slate-900">Ceiling Fan</option>
+					  <option value="Air Cooler" class="text-slate-900">Air Cooler</option>
+				<!--
+                      <option value="Fridge/Refrigerator" class="text-slate-900">Fridge/Refrigerator</option>
+                      <option value="Washing Machine" class="text-slate-900">Washing Machine</option>
                       <option value="Other Small Appliance" class="text-slate-900">Other Small Appliance</option>
+				-->
                     </select>
                   </div>
                 </div>

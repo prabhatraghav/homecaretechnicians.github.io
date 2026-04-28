@@ -14,6 +14,8 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         faridabad: resolve(__dirname, 'ac-servicing-faridabad.html'),
         surajkund: resolve(__dirname, 'ac-servicing-surajkund.html'),
+        chimney_deep_clean: resolve(__dirname, 'chimney-deep-clean-faridabad.html'),
+        gas_hob_deep_clean: resolve(__dirname, 'gas-hob-deep-clean-faridabad.html'),
         ro: resolve(__dirname, 'ro-servicing-faridabad.html'),
         booking: resolve(__dirname, 'book-service.html'),
         blog: resolve(__dirname, 'blog/index.html'),
