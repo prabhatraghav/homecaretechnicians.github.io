@@ -184,9 +184,83 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-24 sm:py-24 bg-white">
+    <section id="services" class="py-24 sm:py-24 bg-white"
+             x-data="{ 
+               services: [
+                 {
+                   title: 'AC Repair & Service',
+                   description: 'Complete AC servicing, gas charging, installation, and repair for all Split and Window AC units.',
+                   image: '/images/ac-repair-service.webp'
+                 },
+                 {
+                   title: 'Washing Machine',
+                   description: 'Expert repair for front-load, top-load, and semi-automatic machines. We fix leaks, motor issues, and PCB problems.',
+                   image: '/images/washing-machine.webp'
+                 },
+                 {
+                   title: 'Refrigerator',
+                   description: 'Specialized in cooling issues, gas refilling, compressor repairs, and sensor troubleshooting for all major brands.',
+                   image: '/images/refrigerator-service.webp'
+                 },
+                 {
+                   title: 'LED TV',
+                   description: 'Expert diagnosis and repair for display issues, sound problems, and motherboard failures for all smart TVs.',
+                   image: '/images/led-tv-service.webp'
+                 },
+                 {
+                   title: 'Microwave Oven',
+                   description: 'Fast solutions for heating problems, spark issues, turntable malfunctions, and control panel repairs.',
+                   image: '/images/microwave-service.webp'
+                 },
+                 {
+                   title: 'Kitchen Chimney',
+                   description: 'Professional chimney cleaning, motor repair, suction troubleshooting, and installation services.',
+                   image: '/images/kitchen-chimney-service.webp'
+                 },
+                 {
+                   title: 'Gas Hob / Stove',
+                   description: 'Expert repair for gas leakage, burner issues, and ignition problems for all major cooktop brands.',
+                   image: '/images/kitchen-hob-service.webp'
+                 },
+                 {
+                   title: 'Laptop & Computer',
+                   description: 'Fast repair for hardware issues, screen replacement, software troubleshooting, and performance upgrades.',
+                   image: '/images/laptop-computer-service.webp'
+                 },
+                 {
+                   title: 'CCTV Camera',
+                   description: 'Comprehensive CCTV installation, maintenance, and repair for home and office security systems.',
+                   image: '/images/cctv-camera.webp'
+                 }
+               ],
+               init() {
+                 setInterval(() => {
+                   this.next();
+                 }, 5000);
+               },
+               next() {
+                 const container = this.$refs.container;
+                 const cardWidth = container.firstElementChild.offsetWidth + 32;
+                 if (container.scrollLeft + container.offsetWidth >= container.scrollWidth - 10) {
+                   container.style.scrollBehavior = 'auto';
+                   container.scrollLeft = 0;
+                   container.style.scrollBehavior = 'smooth';
+                 } else {
+                   container.scrollBy({ left: cardWidth, behavior: 'smooth' });
+                 }
+               },
+               prev() {
+                 const container = this.$refs.container;
+                 const cardWidth = container.firstElementChild.offsetWidth + 32;
+                 if (container.scrollLeft <= 0) {
+                   container.scrollTo({ left: container.scrollWidth, behavior: 'smooth' });
+                 } else {
+                   container.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+                 }
+               }
+             }">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="mx-auto max-w-2xl text-center">
+        <div class="mx-auto max-w-2xl text-center mb-16">
           <h2 class="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl font-black uppercase">
             Our Professional <span class="text-blue-600">Services</span>
           </h2>
@@ -195,113 +269,29 @@
           </p>
         </div>
         
-        <div class="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          <!-- AC Repair -->
-          <div class="group relative rounded-3xl bg-slate-50 p-8 hover:bg-white hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-300 border border-transparent hover:border-slate-100 flex flex-col items-center text-center">
-            <div class="w-24 h-24 mb-6 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
-              <img src="/images/ac-repair-service.webp" alt="AC Repair Service" class="w-full h-full object-contain">
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 uppercase">AC Repair & Service</h3>
-            <p class="mt-4 text-slate-600 leading-relaxed text-sm">Complete AC servicing, gas charging, installation, and repair for all Split and Window AC units.</p>
-            <a href="#quote-form" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover:text-blue-700 uppercase">
-              BOOK NOW <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"></path></svg>
-            </a>
-          </div>
+        <div class="relative group/carousel">
+          <!-- Navigation Handles -->
+          <button @click="prev()" class="absolute left-1 top-40 -translate-y-1/2 z-20 p-2 rounded-full bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-200 transition-all shadow-lg flex items-center justify-center group-hover/carousel:scale-110" aria-label="Previous service">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+          </button>
+          
+          <button @click="next()" class="absolute right-1 top-40 -translate-y-1/2 z-20 p-2 rounded-full bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-200 transition-all shadow-lg flex items-center justify-center group-hover/carousel:scale-110" aria-label="Next service">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          </button>
 
-          <!-- Washing Machine -->
-          <div class="group relative rounded-3xl bg-slate-50 p-8 hover:bg-white hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-300 border border-transparent hover:border-slate-100 flex flex-col items-center text-center">
-            <div class="w-24 h-24 mb-6 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
-              <img src="/images/washing-machine.webp" alt="Washing Machine Repair" class="w-full h-full object-contain">
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 uppercase">Washing Machine</h3>
-            <p class="mt-4 text-slate-600 leading-relaxed text-sm">Expert repair for front-load, top-load, and semi-automatic machines. We fix leaks, motor issues, and PCB problems.</p>
-            <a href="#quote-form" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover:text-blue-700 uppercase">
-              BOOK NOW <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"></path></svg>
-            </a>
-          </div>
-
-          <!-- Refrigerator -->
-          <div class="group relative rounded-3xl bg-slate-50 p-8 hover:bg-white hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-300 border border-transparent hover:border-slate-100 flex flex-col items-center text-center">
-            <div class="w-24 h-24 mb-6 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
-              <img src="/images/refrigerator-service.webp" alt="Refrigerator Repair" class="w-full h-full object-contain">
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 uppercase">Refrigerator</h3>
-            <p class="mt-4 text-slate-600 leading-relaxed text-sm">Specialized in cooling issues, gas refilling, compressor repairs, and sensor troubleshooting for all major brands.</p>
-            <a href="#quote-form" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover:text-blue-700 uppercase">
-              BOOK NOW <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"></path></svg>
-            </a>
-          </div>
-
-          <!-- LED TV -->
-          <div class="group relative rounded-3xl bg-slate-50 p-8 hover:bg-white hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-300 border border-transparent hover:border-slate-100 flex flex-col items-center text-center">
-            <div class="w-24 h-24 mb-6 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
-              <img src="/images/led-tv-service.webp" alt="LED TV Repair" class="w-full h-full object-contain">
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 uppercase">LED TV</h3>
-            <p class="mt-4 text-slate-600 leading-relaxed text-sm">Expert diagnosis and repair for display issues, sound problems, and motherboard failures for all smart TVs.</p>
-            <a href="#quote-form" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover:text-blue-700 uppercase">
-              BOOK NOW <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"></path></svg>
-            </a>
-          </div>
-
-          <!-- Microwave -->
-          <div class="group relative rounded-3xl bg-slate-50 p-8 hover:bg-white hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-300 border border-transparent hover:border-slate-100 flex flex-col items-center text-center">
-            <div class="w-24 h-24 mb-6 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
-              <img src="/images/microwave-service.webp" alt="Microwave Oven Repair" class="w-full h-full object-contain">
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 uppercase">Microwave Oven</h3>
-            <p class="mt-4 text-slate-600 leading-relaxed text-sm">Fast solutions for heating problems, spark issues, turntable malfunctions, and control panel repairs.</p>
-            <a href="#quote-form" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover:text-blue-700 uppercase">
-              BOOK NOW <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"></path></svg>
-            </a>
-          </div>
-
-          <!-- Kitchen Chimney -->
-          <div class="group relative rounded-3xl bg-slate-50 p-8 hover:bg-white hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-300 border border-transparent hover:border-slate-100 flex flex-col items-center text-center">
-            <div class="w-24 h-24 mb-6 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
-              <img src="/images/kitchen-chimney-service.webp" alt="Kitchen Chimney Service" class="w-full h-full object-contain">
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 uppercase">Kitchen Chimney</h3>
-            <p class="mt-4 text-slate-600 leading-relaxed text-sm">Professional chimney cleaning, motor repair, suction troubleshooting, and installation services.</p>
-            <a href="#quote-form" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover:text-blue-700 uppercase">
-              BOOK NOW <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"></path></svg>
-            </a>
-          </div>
-
-          <!-- Gas Hob -->
-          <div class="group relative rounded-3xl bg-slate-50 p-8 hover:bg-white hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-300 border border-transparent hover:border-slate-100 flex flex-col items-center text-center">
-            <div class="w-24 h-24 mb-6 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
-              <img src="/images/kitchen-hob-service.webp" alt="Gas Hob Repair" class="w-full h-full object-contain">
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 uppercase">Gas Hob / Stove</h3>
-            <p class="mt-4 text-slate-600 leading-relaxed text-sm">Expert repair for gas leakage, burner issues, and ignition problems for all major cooktop brands.</p>
-            <a href="#quote-form" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover:text-blue-700 uppercase">
-              BOOK NOW <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"></path></svg>
-            </a>
-          </div>
-
-          <!-- Laptop & Computer -->
-          <div class="group relative rounded-3xl bg-slate-50 p-8 hover:bg-white hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-300 border border-transparent hover:border-slate-100 flex flex-col items-center text-center">
-            <div class="w-24 h-24 mb-6 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
-              <img src="/images/laptop-computer-service.webp" alt="Laptop & Computer Repair" class="w-full h-full object-contain">
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 uppercase">Laptop & Computer</h3>
-            <p class="mt-4 text-slate-600 leading-relaxed text-sm">Fast repair for hardware issues, screen replacement, software troubleshooting, and performance upgrades.</p>
-            <a href="#quote-form" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover:text-blue-700 uppercase">
-              BOOK NOW <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"></path></svg>
-            </a>
-          </div>
-
-          <!-- CCTV Camera -->
-          <div class="group relative rounded-3xl bg-slate-50 p-8 hover:bg-white hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-300 border border-transparent hover:border-slate-100 flex flex-col items-center text-center">
-            <div class="w-24 h-24 mb-6 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
-              <img src="/images/cctv-camera.webp" alt="CCTV Camera Service" class="w-full h-full object-contain">
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 uppercase">CCTV Camera</h3>
-            <p class="mt-4 text-slate-600 leading-relaxed text-sm">Comprehensive CCTV installation, maintenance, and repair for home and office security systems.</p>
-            <a href="#quote-form" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover:text-blue-700 uppercase">
-              BOOK NOW <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"></path></svg>
-            </a>
+          <div x-ref="container" class="flex gap-8 overflow-x-auto pb-12 snap-x snap-mandatory hide-scrollbar scroll-smooth">
+            <template x-for="(service, index) in services" :key="index">
+              <div class="min-w-full sm:min-w-[calc(50%-1rem)] lg:min-w-[calc(33.333%-1.33rem)] snap-start group/card relative rounded-3xl bg-slate-100 p-8 hover:bg-slate-200 hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-300 border border-transparent hover:border-slate-100 flex flex-col items-center text-center">
+                <div class="w-24 h-24 mb-6 group-hover/card:scale-110 transition-transform duration-300 flex items-center justify-center">
+                  <img :src="service.image" :alt="service.title" class="w-full h-full object-contain">
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 uppercase" x-text="service.title"></h3>
+                <p class="mt-4 text-slate-600 leading-relaxed text-sm" x-text="service.description"></p>
+                <a href="#quote-form" class="mt-6 inline-flex items-center text-xs font-black tracking-widest text-blue-600 group-hover/card:text-blue-700 uppercase">
+                  BOOK NOW <svg class="ml-2 w-4 h-4 transition-transform group-hover/card:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"></path></svg>
+                </a>
+              </div>
+            </template>
           </div>
         </div>
       </div>
@@ -566,7 +556,6 @@
     <!-- Latest Homecare Insights Section -->
     <section id="insights" class="py-24 bg-white border-t border-slate-100 overflow-hidden" 
              x-data="{ 
-               active: 0,
                posts: [
                  {
                    category: 'RO Service',
@@ -581,7 +570,7 @@
                    category: 'AC Safety',
                    date: 'April 26, 2026',
                    title: 'Is Your AC a Fire Hazard? How Service Prevents Accidents',
-                   excerpt: 'Don\'t ignore the warning signs. Learn how regular maintenance prevents short circuits, compressor overheating, and fires...',
+                   excerpt: 'Don\'t ignore the warning signs. Learn how regular service prevents short circuits, compressor overheating, and fires...',
                    link: '/blog/ac-safety-accidents.html',
                    image: '/images/ac-servicing-faridabad.webp',
                    color: 'red'
@@ -604,7 +593,33 @@
                    image: '/images/kitchen-hob-service.webp',
                    color: 'emerald'
                  }
-               ]
+               ],
+               init() {
+                 setInterval(() => {
+                   this.next();
+                 }, 5000);
+               },
+               next() {
+                 const container = this.$refs.container;
+                 const cardWidth = container.firstElementChild.offsetWidth + 24;
+                 if (container.scrollLeft + container.offsetWidth >= container.scrollWidth - 10) {
+                   // One-way jump back to start
+                   container.style.scrollBehavior = 'auto';
+                   container.scrollLeft = 0;
+                   container.style.scrollBehavior = 'smooth';
+                 } else {
+                   container.scrollBy({ left: cardWidth, behavior: 'smooth' });
+                 }
+               },
+               prev() {
+                 const container = this.$refs.container;
+                 const cardWidth = container.firstElementChild.offsetWidth + 24;
+                 if (container.scrollLeft <= 0) {
+                   container.scrollTo({ left: container.scrollWidth, behavior: 'smooth' });
+                 } else {
+                   container.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+                 }
+               }
              }">
       <div class="container mx-auto px-4">
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-y-6">
@@ -616,15 +631,26 @@
               Expert advice, safety and maintenance tips from our professional technicians.
             </p>
           </div>
-          <a href="/blog/" class="inline-flex items-center gap-2 text-blue-600 font-black uppercase text-xs tracking-widest hover:text-blue-700 transition group">
-            View All Articles
-            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"></path></svg>
-          </a>
+          <div class="flex items-center gap-6">
+            <a href="/blog/" class="inline-flex items-center gap-2 text-blue-600 font-black uppercase text-xs tracking-widest hover:text-blue-700 transition group">
+              View All Articles
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"></path></svg>
+            </a>
+          </div>
         </div>
 
         <!-- Carousel Container -->
-        <div class="relative">
-          <div class="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar">
+        <div class="relative group/carousel">
+          <!-- Navigation Handles -->
+          <button @click="prev()" class="absolute left-2 top-52 -translate-y-1/2 z-20 p-2 rounded-full bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-200 transition-all shadow-lg flex items-center justify-center group-hover/carousel:scale-110" aria-label="Previous article">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+          </button>
+          
+          <button @click="next()" class="absolute right-2 top-52 -translate-y-1/2 z-20 p-2 rounded-full bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-200 transition-all shadow-lg flex items-center justify-center group-hover/carousel:scale-110" aria-label="Next article">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          </button>
+
+          <div x-ref="container" class="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar scroll-smooth">
             <template x-for="(post, index) in posts" :key="index">
               <article class="min-w-full md:min-w-[calc(50%-1.5rem)] lg:min-w-[calc(33.333%-1rem)] snap-start bg-slate-50 rounded-3xl overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-300">
                 <div class="aspect-video relative overflow-hidden bg-slate-200">
